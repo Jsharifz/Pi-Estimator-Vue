@@ -12,6 +12,7 @@ const app = new Vue({
         hypotenuse: 0,
         intervalRate: 0,
         piEstimation: (0).toFixed(10),
+        error: 0,
         intervalCounter: 0,
         fasterButtonUnusable: false,
         slowerButtonUnusable: true,
@@ -24,6 +25,7 @@ const app = new Vue({
     },
     created() {
         this.rateConverter();
+        this.piError();
         this.cssTimeConverter();
         this.styleObjectFunction();
     },
@@ -49,6 +51,7 @@ const app = new Vue({
                 (this.linesWithinCircle * 4) /
                 this.counter
             ).toFixed(10);
+            this.piError();
             this.styleObjectFunction();
         },
         buttonActiveChecker: function () {
@@ -183,6 +186,9 @@ const app = new Vue({
                 };
             }
         },
+        piError: function () {
+            this.error = (Math.PI - this.piEstimation).toFixed(10);
+        },
         reset: function () {
             clearInterval(this.intervalCounter);
             this.started = false;
@@ -203,6 +209,7 @@ const app = new Vue({
             this.fasterButtonUnusable = false;
             this.slowerButtonUnusable = true;
             this.rateConverter();
+            this.piError();
             this.cssTimeConverter();
             this.styleObjectFunction();
         },

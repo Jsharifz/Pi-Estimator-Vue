@@ -152,7 +152,7 @@ const app = new Vue({
                 case false:
                     this.started = true;
                     this.calculator();
-                    this.startPause = "Stop";
+                    this.startPause = "Pause";
                     this.intervalCounter = setInterval(
                         this.calculator,
                         this.intervalRate
@@ -166,13 +166,22 @@ const app = new Vue({
             }
         },
         styleObjectFunction: function () {
-            this.styleObject = {
-                background: this.lineIndicator,
-                "box-shadow": `0 0 0.25rem ${this.lineIndicator}`,
-                transform: `rotate(${this.angle}deg)`,
-                width: `${this.cssWidth}px`,
-                transition: `${this.cssTime}s`,
-            };
+            if (this.rate <= 50) {
+                this.styleObject = {
+                    background: this.lineIndicator,
+                    "box-shadow": `0 0 0.25rem ${this.lineIndicator}`,
+                    transform: `rotate(${this.angle}deg)`,
+                    width: `${this.cssWidth}px`,
+                    transition: `${this.cssTime}s`,
+                };
+            } else {
+                this.styleObject = {
+                    background: this.lineIndicator,
+                    "box-shadow": `0 0 0.25rem ${this.lineIndicator}`,
+                    transform: `rotate(${this.angle}deg)`,
+                    width: `${this.cssWidth}px`,
+                };
+            }
         },
         reset: function () {
             clearInterval(this.intervalCounter);

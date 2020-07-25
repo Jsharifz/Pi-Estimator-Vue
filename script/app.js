@@ -52,9 +52,9 @@ const app = new Vue({
             this.styleObjectFunction();
         },
         buttonActiveChecker: function () {
-            if (this.rate === 1) {
+            if (this.rate <= 1) {
                 this.slowerButtonUnusable = true;
-            } else if (this.rate === 300) {
+            } else if (this.rate >= 300) {
                 this.fasterButtonUnusable = true;
             } else if (this.rate < 300 && this.rate > 1) {
                 this.fasterButtonUnusable = false;

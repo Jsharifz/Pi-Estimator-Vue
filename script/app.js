@@ -29,8 +29,6 @@ const app = new Vue({
         this.cssTimeConverter();
         this.styleObjectFunction();
     },
-    watcher: {},
-    computed: {},
     methods: {
         calculator: function () {
             this.counter++;
